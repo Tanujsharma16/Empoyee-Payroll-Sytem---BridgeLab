@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Test Employee",
+    "department": "IT",
+    "salary": 25000
+  },
+  {
+    "id": 1771233570117,
+    "name": "Harsh",
+    "department": "Btech ",
+    "salary": 0
+  }
+]
