@@ -1,14 +1,48 @@
 [
   {
     "id": 1,
-    "name": "Test Employee",
-    "department": "IT",
-    "salary": 25000
+    "name": "Raajeev",
+    "position": "HR",
+    "salary": 55000,
+    "DateOfJoining": "2021-06-01"
   },
   {
-    "id": 1771233570117,
-    "name": "Harsh",
-    "department": "Btech ",
-    "salary": 0
+    "id": 2,
+    "name": "Anurag",
+    "position": "Project Manager",
+    "salary": 75000,
+    "Gender": "Male",
+    "DateOfJoining": "2020-08-10"
+  },
+  {
+    "id": 3,
+    "name": "Tanuj Sharma",
+    "position": "UX Designer",
+    "salary": 55000,
+    "Gender": "Male",
+    "DateOfJoining": "2022-01-15"
+  },
+  {
+    "id": 4,
+    "name": "Shubham",
+    "position": "Data Analyst",
+    "salary": 65000,
+    "Gender": "Male",
+    "DateOfJoining": "2021-11-01"
+  },
+  {
+    "id": 5,
+    "name": "Batsal Singh",
+    "position": "HR Specialist",
+    "salary": 50000,
+    "Gender": "Male",
+    "DateOfJoining": "2020-05-20"
+  },
+  {
+    "id": 1771407084329,
+    "name": "Shubham",
+    "position": "HR",
+    "DateOfJoining": "2026-02-18",
+    "salary": 40000
   }
 ]

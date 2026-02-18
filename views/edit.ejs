@@ -1,19 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Edit Employee</title>
-<link rel="stylesheet" href="/style.css">
+    <title>Edit Employee</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
 
-<h2>Edit Employee</h2>
+    <div class="form-container">
 
-<form method="POST" action="/edit/<%= employee.id %>">
-<input type="text" name="name" value="<%= employee.name %>" required>
-<input type="text" name="department" value="<%= employee.department %>" required>
-<input type="number" name="salary" value="<%= employee.salary %>" required>
-<button type="submit">Update</button>
-</form>
+        <h2>Edit Employee</h2>
+
+        <form action="/edit/<%= employee.id %>" method="POST">
+
+            <!-- Name -->
+            <label>Name</label>
+            <input type="text" name="name" value="<%= employee.name %>" required>
+
+            <!-- Gender -->
+            <label>Gender</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="gender" value="Male" <%=employee.gender==='Male' ? 'checked' : '' %>> Male
+                </label>
+
+                <label>
+                    <input type="radio" name="gender" value="Female" <%=employee.gender==='Female' ? 'checked' : '' %>>
+                    Female
+                </label>
+            </div>
+
+            <!-- Department -->
+            <label>Department</label>
+            <select name="position" required>
+                <option value="HR" <%=employee.position==='HR' ?'selected':'' %>>HR</option>
+                <option value="Sales" <%=employee.position==='Sales' ?'selected':'' %>>Sales</option>
+                <option value="Finance" <%=employee.position==='Finance' ?'selected':'' %>>Finance</option>
+                <option value="Engineer" <%=employee.position==='Engineer' ?'selected':'' %>>Engineer</option>
+                <option value="Others" <%=employee.position==='Others' ?'selected':'' %>>Others</option>
+            </select>
+
+            <!-- Salary -->
+            <label>Salary</label>
+            <input type="number" name="salary" value="<%= employee.salary %>" required>
+
+            <!-- Start Date -->
+            <label>Start Date</label>
+            <input type="date" name="DateOfJoining" value="<%= employee.DateOfJoining %>" required>
+
+            <!-- Buttons -->
+            <div class="btn-group">
+                <a href="/" class="cancel-btn">Cancel</a>
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+
+        </form>
+
+    </div>
 
 </body>
+
 </html>

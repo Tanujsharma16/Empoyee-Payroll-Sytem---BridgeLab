@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Add Employee</title>
-<link rel="stylesheet" href="/style.css">
+    <title>Add Employee</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-<h2>Add Employee</h2>
+<div class="form-container">
 
-<form method="POST" action="/add">
-<input type="text" name="name" placeholder="Name" required>
-<input type="text" name="department" placeholder="Department" required>
-<input type="number" name="salary" placeholder="Salary" required>
-<button type="submit">Add</button>
-</form>
+    <h2>Employee Payroll Form</h2>
+
+    <form action="/add" method="POST">
+
+        <!-- Name -->
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Enter employee name" required>
+
+
+        <!-- Gender -->
+        <label>Gender</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="Male"> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+        </div>
+
+        <!-- Department -->
+        <label>Department</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="position" value="HR"> HR</label>
+            <label><input type="checkbox" name="position" value="Sales"> Sales</label>
+            <label><input type="checkbox" name="position" value="Finance"> Finance</label>
+            <label><input type="checkbox" name="position" value="Engineer"> Engineer</label>
+            <label><input type="checkbox" name="position" value="Others"> Others</label>
+        </div>
+
+        <!-- Salary -->
+        <label>Salary</label>
+        <input type="number" name="salary" placeholder="Enter salary amount" required>
+
+        <!-- Start Date -->
+        <label>Start Date</label>
+        <input type="date" name="DateOfJoining" required>
+
+        <!-- Buttons -->
+        <div class="btn-group">
+            <a href="/" class="cancel-btn">Cancel</a>
+            <button type="submit" class="submit-btn">Submit</button>
+        </div>
+
+    </form>
+
+</div>
 
 </body>
 </html>
