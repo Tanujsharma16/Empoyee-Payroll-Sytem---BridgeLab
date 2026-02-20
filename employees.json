@@ -1,9 +1,45 @@
 [
   {
-    "id": 1771408775870,
-    "name": "Anurag",
+    "id": 1771521141491,
+    "name": "Tanuj Sharma ",
     "position": "HR",
+    "gender": "Male",
+    "DateOfJoining": "2003-01-01",
+    "salary": 25000
+  },
+  {
+    "id": 1771521288091,
+    "name": "hh",
+    "position": "HR",
+    "gender": "Male",
+    "DateOfJoining": "2665-01-01",
+    "salary": null
+  },
+  {
+    "id": 1771527682642,
+    "name": "Tanuj Sharma ",
+    "position": [
+      "HR",
+      "Engineer"
+    ],
+    "gender": "Male",
+    "DateOfJoining": "2006-01-01",
+    "salary": null
+  },
+  {
+    "id": 1771563407803,
+    "name": "Harsh ",
+    "position": "HR",
+    "gender": "Male",
     "DateOfJoining": "2005-01-01",
-    "salary": 6552352
+    "salary": null
+  },
+  {
+    "id": 1771563597337,
+    "name": "Tanuj Sharma ",
+    "position": "Sales",
+    "gender": "Male",
+    "DateOfJoining": "2009-01-01",
+    "salary": 2500
   }
 ]

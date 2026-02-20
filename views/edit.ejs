@@ -14,42 +14,52 @@
 
         <form action="/edit/<%= employee.id %>" method="POST">
 
-            <!-- Name -->
-            <label>Name</label>
-            <input type="text" name="name" value="<%= employee.name %>" required>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" value="<%= employee.name %>" required>
+                </div>
 
-            <!-- Gender -->
-            <label>Gender</label>
-            <div class="radio-group">
-                <label>
-                    <input type="radio" name="gender" value="Male" <%=employee.gender==='Male' ? 'checked' : '' %>> Male
-                </label>
-
-                <label>
-                    <input type="radio" name="gender" value="Female" <%=employee.gender==='Female' ? 'checked' : '' %>>
-                    Female
-                </label>
+                <div class="form-group">
+                    <label>Salary</label>
+                    <input type="number" name="salary" value="<%= employee.salary %>" required>
+                </div>
             </div>
 
-            <!-- Department -->
-            <label>Department</label>
-            <select name="position" required>
-                <option value="HR" <%=employee.position==='HR' ?'selected':'' %>>HR</option>
-                <option value="Sales" <%=employee.position==='Sales' ?'selected':'' %>>Sales</option>
-                <option value="Finance" <%=employee.position==='Finance' ?'selected':'' %>>Finance</option>
-                <option value="Engineer" <%=employee.position==='Engineer' ?'selected':'' %>>Engineer</option>
-                <option value="Others" <%=employee.position==='Others' ?'selected':'' %>>Others</option>
-            </select>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="gender" value="Male"
+                        <%= employee.gender==='Male' ? 'checked' : '' %>> Male
+                    </label>
 
-            <!-- Salary -->
-            <label>Salary</label>
-            <input type="number" name="salary" value="<%= employee.salary %>" required>
+                    <label>
+                        <input type="radio" name="gender" value="Female"
+                        <%= employee.gender==='Female' ? 'checked' : '' %>> Female
+                    </label>
+                </div>
+            </div>
 
-            <!-- Start Date -->
-            <label>Start Date</label>
-            <input type="date" name="DateOfJoining" value="<%= employee.DateOfJoining %>" required>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Department</label>
+                    <select name="position" required>
+                        <option value="HR" <%=employee.position==='HR' ?'selected':'' %>>HR</option>
+                        <option value="Sales" <%=employee.position==='Sales' ?'selected':'' %>>Sales</option>
+                        <option value="Finance" <%=employee.position==='Finance' ?'selected':'' %>>Finance</option>
+                        <option value="Engineer" <%=employee.position==='Engineer' ?'selected':'' %>>Engineer</option>
+                        <option value="Others" <%=employee.position==='Others' ?'selected':'' %>>Others</option>
+                    </select>
+                </div>
 
-            <!-- Buttons -->
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="date" name="DateOfJoining"
+                           value="<%= employee.DateOfJoining %>" required>
+                </div>
+            </div>
+
             <div class="btn-group">
                 <a href="/" class="cancel-btn">Cancel</a>
                 <button type="submit" class="submit-btn">Submit</button>

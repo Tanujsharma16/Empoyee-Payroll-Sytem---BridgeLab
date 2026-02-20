@@ -5,7 +5,6 @@ const fileHandler = require('./modules/fileHandler');
 const app = express();
 const PORT = 3000;
 
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -21,71 +20,51 @@ app.get('/add', (req, res) => {
     res.render('add');
 });
 
-app.post('/add', async (req, res) => { 
-    const { name, position, salary, Gender, DateOfJoining } = req.body;
+app.post('/add', async (req, res) => {
+    const { name, position, salary, gender, DateOfJoining } = req.body;
+
     const employees = await fileHandler.read();
-    const newEmployee = {
+
+    employees.push({
         id: Date.now(),
         name,
         position,
-        Gender,
+        gender: gender || "Not set",
         DateOfJoining,
-        salary: parseFloat(salary)
-    };
-    employees.push(newEmployee);
+        salary: Number(salary)
+    });
+
     await fileHandler.write(employees);
     res.redirect('/');
-
- })
+});
 
 app.get('/edit/:id', async (req, res) => {
-    const { id } = req.params;
     const employees = await fileHandler.read();
-    const employee = employees.find(emp => emp.id === parseInt(id));
-    if (employee) {
-        res.render('edit', { employee });
-    } else {
-        res.status(404).send('Employee not found');
-    }
+    const employee = employees.find(e => e.id == req.params.id);
+    res.render('edit', { employee });
 });
 
 app.post('/edit/:id', async (req, res) => {
-    const { id } = req.params;
-    const { name, position, salary, Gender, DateOfJoining } = req.body;
-    const employees = await fileHandler.read();
-    const index = employees.findIndex(emp => emp.id === parseInt(id));
-    if (index !== -1) {
-        employees[index] = {
-            id: parseInt(id),
-            name,
-            position,
-            salary: parseFloat(salary),
-            Gender,
-            DateOfJoining
-        };
-        await fileHandler.write(employees);
-        res.redirect('/');
-    } else {
-        res.status(404).send('Employee not found');
-    }
+    const { name, position, salary, gender, DateOfJoining } = req.body;
+    let employees = await fileHandler.read();
+
+    employees = employees.map(emp =>
+        emp.id == req.params.id
+            ? { ...emp, name, position, gender, salary: Number(salary), DateOfJoining }
+            : emp
+    );
+
+    await fileHandler.write(employees);
+    res.redirect('/');
 });
 
 app.get('/delete/:id', async (req, res) => {
-    const { id } = req.params;
-    const employees = await fileHandler.read();
-    const updatedEmployees = employees.filter(emp => emp.id !== parseInt(id));
-    await fileHandler.write(updatedEmployees);
+    let employees = await fileHandler.read();
+    employees = employees.filter(emp => emp.id != req.params.id);
+    await fileHandler.write(employees);
     res.redirect('/');
 });
 
-app.post('/delete/:id', async (req, res) => {
-    const { id } = req.params;
-    const employees = await fileHandler.read();
-    const updatedEmployees = employees.filter(emp => emp.id !== parseInt(id));
-    await fileHandler.write(updatedEmployees);
-    res.redirect('/');
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () =>
+    console.log(`Server running on http://localhost:${PORT}`)
+);

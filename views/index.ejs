@@ -2,34 +2,35 @@
 <html>
 <head>
     <title>Employee Payroll</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="/style.css">
 
-    <!-- Font Awesome -->
+    <!-- ICONS -->
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
 <div class="dashboard">
 
-    <!-- TOP BAR -->
     <div class="header">
         <h2>Employee Details</h2>
+
         <div class="header-right">
             <input type="text" id="searchInput"
                    placeholder="Search employee..."
                    onkeyup="searchEmployee()">
-            <a href="/add" class="add-btn">+ Add User</a>
+
+            <a href="/add" class="add-btn">
+                <i class="fa-solid fa-user-plus"></i> Add User
+            </a>
         </div>
     </div>
 
     <!-- SUMMARY CARDS -->
     <div class="summary">
+
         <div class="card">
-            <i class="fa-solid fa-users icon"></i>
+            <div class="icon-box"><i class="fa-solid fa-users"></i></div>
             <div>
                 <p>Total Employees</p>
                 <h3><%= employees.length %></h3>
@@ -37,20 +38,38 @@
         </div>
 
         <div class="card">
-            <i class="fa-solid fa-building icon"></i>
+            <div class="icon-box"><i class="fa-solid fa-building"></i></div>
             <div>
                 <p>Departments</p>
-                <h3>2</h3>
+                <h3><%= [...new Set(employees.map(e => e.position))].length %></h3>
             </div>
         </div>
 
         <div class="card">
-            <i class="fa-solid fa-indian-rupee-sign icon"></i>
+            <div class="icon-box"><i class="fa-solid fa-indian-rupee-sign"></i></div>
             <div>
                 <p>Total Salary</p>
-                <h3>₹77,331</h3>
+                <h3>
+                    ₹<%= employees.reduce((s,e)=> s + Number(e.salary || 0), 0).toLocaleString() %>
+                </h3>
             </div>
         </div>
+
+        <div class="card">
+            <div class="icon-box"><i class="fa-solid fa-money-bill-wave"></i></div>
+            <div>
+                <p>Avg Salary</p>
+                <h3>
+                    ₹<%= employees.length
+                    ? Math.round(
+                        employees.reduce((s,e)=> s + Number(e.salary || 0), 0)
+                        / employees.length
+                      ).toLocaleString()
+                    : 0 %>
+                </h3>
+            </div>
+        </div>
+
     </div>
 
     <!-- TABLE -->
@@ -66,10 +85,16 @@
 
         <% employees.forEach(emp => { %>
         <tr>
-            <td><%= emp.name %></td>
+            <td>
+                <i class="fa-solid fa-circle-user avatar"></i>
+                <%= emp.name %>
+            </td>
             <td><%= emp.gender %></td>
             <td><%= emp.position %></td>
-            <td>₹<%= emp.salary %></td>
+
+            <!-- ✅ SAFE SALARY -->
+            <td>₹<%= Number(emp.salary || 0).toLocaleString() %></td>
+
             <td><%= emp.DateOfJoining %></td>
             <td>
                 <a href="/edit/<%= emp.id %>" class="action-btn edit">
@@ -85,7 +110,6 @@
 
 </div>
 
-<!-- Search Script -->
 <script>
 function searchEmployee() {
     let input = document.getElementById("searchInput").value.toLowerCase();

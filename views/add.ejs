@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div class="form-container">
+<div class="form-card">
 
     <h2>Employee Payroll Form</h2>
 
@@ -16,11 +16,20 @@
         <label>Name</label>
         <input type="text" name="name" placeholder="Enter employee name" required>
 
+        <!-- Profile Images -->
+        <label>Profile Image</label>
+        <div class="avatar-select">
+            <input type="radio" name="avatar" id="a1"><label for="a1"><img src="https://i.pravatar.cc/60?img=1"></label>
+            <input type="radio" name="avatar" id="a2"><label for="a2"><img src="https://i.pravatar.cc/60?img=2"></label>
+            <input type="radio" name="avatar" id="a3"><label for="a3"><img src="https://i.pravatar.cc/60?img=3"></label>
+            <input type="radio" name="avatar" id="a4"><label for="a4"><img src="https://i.pravatar.cc/60?img=4"></label>
+            <input type="radio" name="avatar" id="a5"><label for="a5"><img src="https://i.pravatar.cc/60?img=5"></label>
+        </div>
 
         <!-- Gender -->
         <label>Gender</label>
         <div class="radio-group">
-            <label><input type="radio" name="gender" value="Male"> Male</label>
+            <label><input type="radio" name="gender" value="Male" required> Male</label>
             <label><input type="radio" name="gender" value="Female"> Female</label>
         </div>
 
@@ -34,9 +43,10 @@
             <label><input type="checkbox" name="position" value="Others"> Others</label>
         </div>
 
-        <!-- Salary -->
+        <!-- Salary Slider -->
         <label>Salary</label>
-        <input type="number" name="salary" placeholder="Enter salary amount" required>
+<input type="text" name="salary" placeholder="Enter salary" required>
+         
 
         <!-- Start Date -->
         <label>Start Date</label>
