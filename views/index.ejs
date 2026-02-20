@@ -86,13 +86,16 @@
         <% employees.forEach(emp => { %>
         <tr>
             <td>
-                <i class="fa-solid fa-circle-user avatar"></i>
+                <!-- SHOW SELECTED AVATAR -->
+                <img class="avatar"
+                     src="https://i.pravatar.cc/40?img=<%= emp.avatar || 1 %>">
+
                 <%= emp.name %>
             </td>
+
             <td><%= emp.gender %></td>
             <td><%= emp.position %></td>
 
-            <!--  SAFE SALARY -->
             <td>₹<%= Number(emp.salary || 0).toLocaleString() %></td>
 
             <td><%= emp.DateOfJoining %></td>

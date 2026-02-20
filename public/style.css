@@ -327,3 +327,13 @@ select {
 .submit-btn:hover {
     background: #256428;
 }
+
+/* AVATAR IMAGE FIX */
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+  vertical-align:middle;
+  margin-right:10px;
+}
